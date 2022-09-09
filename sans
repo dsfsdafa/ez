@@ -167,7 +167,7 @@ CombatTap:AddButton({
 })
 
 CombatTap:AddButton({
-	Name = "Wipe Victim's Starter Gear",
+	Name = "Remove victim's starter Gear",
 	Callback = function()		
 	for _, child in pairs(game.Players[sans].StarterGear:GetChildren()) do
 	local A_1 = child
