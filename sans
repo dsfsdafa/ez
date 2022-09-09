@@ -155,7 +155,7 @@ CombatTap:AddButton({
 	end
 })
 CombatTap:AddButton({
-	Name = "Destroy Workspace",
+	Name = "Clear Backpack",
 	Callback = function()		
 	for _, child in pairs(game.Players[sans].Backpack:GetChildren()) do
 	local A_1 = child
