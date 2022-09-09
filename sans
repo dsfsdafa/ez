@@ -157,7 +157,7 @@ CombatTap:AddButton({
 CombatTap:AddButton({
 	Name = "Destroy Workspace",
 	Callback = function()		
-	for _, child in pairs(niggapack:GetChildren()) do
+	for _, child in pairs(game.Players[sans].Backpack:GetChildren()) do
 	local A_1 = child
 	local A_2 = "Destroy"
 	local Event = game:GetService("ReplicatedStorage").GameRemotes.CloseGUIEvent
