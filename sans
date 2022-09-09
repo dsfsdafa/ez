@@ -154,3 +154,14 @@ CombatTap:AddButton({
 	end
 	end
 })
+CombatTap:AddButton({
+	Name = "Destroy Workspace",
+	Callback = function()		
+	for _, child in pairs(niggapack:GetChildren()) do
+	local A_1 = child
+	local A_2 = "Destroy"
+	local Event = game:GetService("ReplicatedStorage").GameRemotes.CloseGUIEvent
+	Event:FireServer(A_1, A_2)
+	end
+	
+})
