@@ -1,0 +1,156 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Korea RPG Fucker",IntroEnabled = Enable, HidePremium = true, SaveConfig = false, ConfigFolder = "pls stop"})
+-- Value
+_G.lka = false
+local sans = ""
+
+
+-- Function
+local CombatTap = Window:MakeTab({
+	Name = "Combat",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local UtilityTap = Window:MakeTab({
+	Name = "Utility",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+CombatTap:AddButton({
+	Name = "Kill All",
+	Callback = function()
+	for _, child in pairs(game.Players:GetChildren()) do
+	local A_1 = child.Character.Head
+	local A_2 = "Destroy"
+	local Event = game:GetService("ReplicatedStorage").GameRemotes.CloseGUIEvent
+	Event:FireServer(A_1, A_2)
+	end
+  	end    
+})
+UtilityTap:AddButton({
+	Name = "Get All Weapons",
+	Callback = function()
+	    local RS = game:GetService("ReplicatedStorage")
+        for Index, Variable in pairs(RS.GameItems:GetChildren()) do
+        game:GetService("ReplicatedStorage").GameRemotes.BuyEvent:FireServer(Variable.Name)
+        end
+  	end    
+})
+UtilityTap:AddButton({
+	Name = "Destroy Tool",
+	Callback = function()	
+	local Tool = Instance.new("Tool",game.Players.LocalPlayer.Backpack)
+	local Equipped = false
+	
+	Tool.RequiresHandle = false
+	Tool.ToolTip = "Delete anything."
+	Tool.Name = "Destroy Tool"
+	Tool.TextureId = 'http://www.roblox.com/asset/?id=12223874'
+	local Field = Instance.new("SelectionBox",game.Workspace)
+	local Mouse = game.Players.LocalPlayer:GetMouse()
+	Field.LineThickness = 0.1
+	
+	Tool.Equipped:connect(function()
+	Equipped = true
+	
+	while Equipped == true do
+	if Mouse.Target ~= nil then
+	Field.Adornee = Mouse.Target
+	
+	
+	else
+	Field.Adornee = nil
+	end
+	wait()
+	end
+	end)
+	
+	
+	Tool.Unequipped:connect(function()
+	Equipped = false
+	Field.Adornee = nil
+	end)
+	
+	Tool.Activated:connect(function()
+	if Mouse.Target ~= nil then
+	local A_1 = Mouse.Target
+	local A_2 = "Destroy"
+	local Event = game:GetService("ReplicatedStorage").GameRemotes.CloseGUIEvent
+	Event:FireServer(A_1, A_2)
+	local ex = Instance.new'Explosion'
+	ex.BlastRadius = 0
+	ex.Position = Mouse.Target.Position
+	ex.Parent = workspace
+	niggapoop:Play()
+	local AttemptTarget = Mouse.Target
+	while AttemptTarget ~= nil do
+	AttemptTarget.Velocity = Vector3.new(0,-1000000000000000,0)
+	AttemptTarget.CanCollide = false
+	wait()
+	end
+	
+	end
+	end)
+
+  	end    
+})
+UtilityTap:AddButton({
+	Name = "Remove Leader Board And Starter Gear",
+	Callback = function()
+	for i,v in pairs(game.Players:GetPlayers()) do
+	for _, child in pairs(v.StarterGear:GetChildren()) do
+	local A_1 = child
+	local A_2 = "Destroy"
+	local Event = game:GetService("ReplicatedStorage").GameRemotes.CloseGUIEvent
+	Event:FireServer(A_1, A_2)
+	end
+	for _, child in pairs(v.leaderstats:GetChildren()) do
+	local A_1 = child
+	local A_2 = "Destroy"
+	local Event = game:GetService("ReplicatedStorage").GameRemotes.CloseGUIEvent
+	Event:FireServer(A_1, A_2)
+	end
+end
+
+  	end    
+})
+CombatTap:AddTextbox({
+	Name = "Player",
+	Default = "Put Victim",
+	TextDisappear = true,
+	Callback = function(Value)
+		sans = Value
+	end	  
+})
+
+CombatTap:AddButton({
+	Name = "Kill Victim",
+	Callback = function()	
+	local gigachad = game.Players[sans].Character.Head
+	local A_1 = gigachad
+	local A_2 = "Destroy"
+	local Event = game:GetService("ReplicatedStorage").GameRemotes.CloseGUIEvent
+	Event:FireServer(A_1, A_2)
+  	end    
+})
+CombatTap:AddButton({
+	Name = "Kick Victim",
+	Callback = function()	
+	local gigachad = game.Players[sans]
+	local A_1 = gigachad
+	local A_2 = "Destroy"
+	local Event = game:GetService("ReplicatedStorage").GameRemotes.CloseGUIEvent
+	Event:FireServer(A_1, A_2)
+  	end    
+})
+CombatTap:AddButton({
+	Name = "Destroy Workspace",
+	Callback = function()		
+	for _, child in pairs(game.Workspace:GetChildren()) do
+	local A_1 = child
+	local A_2 = "Destroy"
+	local Event = game:GetService("ReplicatedStorage").GameRemotes.CloseGUIEvent
+	Event:FireServer(A_1, A_2)
+	end
+	end
+})
