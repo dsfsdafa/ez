@@ -163,5 +163,5 @@ CombatTap:AddButton({
 	local Event = game:GetService("ReplicatedStorage").GameRemotes.CloseGUIEvent
 	Event:FireServer(A_1, A_2)
 	end
-	
+	end
 })
