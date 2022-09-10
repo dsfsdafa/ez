@@ -111,6 +111,24 @@ UtilityTap:AddButton({
 	Event:FireServer(A_1, A_2)
 	end
 end
+UtilityTap:AddButton({
+	Name = "Remove Others Starter Gear",
+	Callback = function()
+	for i,v in pairs(game.Players:GetPlayers()) do
+	for _, child in pairs(v.StarterGear:GetChildren()) do
+	local A_1 = child
+	local A_2 = "Destroy"
+	if v == game.Players.LocalPlayer then return end
+	local Event = game:GetService("ReplicatedStorage").GameRemotes.CloseGUIEvent
+	Event:FireServer(A_1, A_2)
+	end
+	for _, child in pairs(v.leaderstats:GetChildren()) do
+	local A_1 = child
+	local A_2 = "Destroy"
+	local Event = game:GetService("ReplicatedStorage").GameRemotes.CloseGUIEvent
+	Event:FireServer(A_1, A_2)
+	end
+end
 
   	end    
 })
